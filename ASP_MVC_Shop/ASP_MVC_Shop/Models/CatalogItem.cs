@@ -16,6 +16,9 @@ namespace ASP_MVC_Shop.Models
         [Range(1, int.MaxValue, ErrorMessage = "Only positive number allowed")]
         [Display(Name= "Quantity in stock")]
         public int Count { get; set; }
+        [Required(ErrorMessage = "The Image field cannot be empty")]
+        [Display(Name = "Url of product image")]
+        public string Image { get; set; }
 
     }
 }
