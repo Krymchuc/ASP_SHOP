@@ -45,6 +45,35 @@ namespace ASP_MVC_Shop.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var item = _dbContext.CatalogItems.Find(id);
+            return View(item);
+        }
+        [HttpPost]
+        public IActionResult Edit(CatalogItem model)
+        {
+            var item=_dbContext.CatalogItems.Find(model.Id);
+            if (ModelState.IsValid)
+            {
+                item.Name= model.Name;
+                item.Price= model.Price;    
+                item.Count=model.Count;
+                item.Image=model.Image;
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+            
+        }
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var item =_dbContext.CatalogItems.Find(id);
+            return View(item);
+        }
+
+        [HttpGet]
         public IActionResult Init()
         {
             if (_dbContext.CatalogItems.Any()) 
