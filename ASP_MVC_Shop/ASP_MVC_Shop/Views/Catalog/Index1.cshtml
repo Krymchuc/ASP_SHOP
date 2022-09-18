@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ASP_MVC_Shop.Models.CatalogItem>
+
+@{
+    ViewData["Title"] = "List of products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="float-end" style="margin:7px 0 0 0" >
+    <a class="btn btn-primary" asp-action="Create">Create new product</a>
+</div>
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+
+@foreach (var item in Model) {
+        /*
+        <tr>
+            <td>
+                <img img src="@item.Image" class="card-img-top" style="width: 18rem; height:20rem;" alt="...">
+            </td>
+            <td>
+                <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+            </td>
+            <td>
+                <h4>@Html.DisplayFor(modelItem => item.Price) $</h4>
+            </td>
+            <td>
+                <h4>@Html.DisplayFor(modelItem => item.Count)</h4>
+            </td>
+            <td>
+                <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>*/
+        <div class="card" style="width: 20rem;display:inline-block;">
+          <img src="@item.Image" class="card-img-top" style="height:20rem;" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+            <p class="card-text">@Html.DisplayFor(modelItem => item.Price) $</p>
+            <p class="card-text">Quantity in stock: @Html.DisplayFor(modelItem => item.Count)</p>
+          </div>        
+          <div class="card-body">
+              <a class="btn btn-outline-warning" class="card-link" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+              <a class="btn btn-outline-primary" class="card-link" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+              <a class="btn btn-outline-danger" class="card-link" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+          </div>
+        </div>
+}
+        
+    </tbody>
+</table>
