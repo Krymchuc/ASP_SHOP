@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CatalogItem
+
+<h3>New product</h3>
+<hr/>
+<form method="post" action="/catalog/create" class="form-group">
+    <label class="contol-label">Name of product</label>
+    <input type="text" class="form-control input-lg" name="text"/>
+    <label class="contol-label">Count of product</label>
+    <input type="number" class="form-control input-lg" name="count"/>
+    <label class="contol-label">Price of product</label>
+    <input type="number" class="form-control input-lg" name="price"/>
+    <hr/>
+    <button type="submit" class="btn btn-primary">Save new product</button>
+</form>

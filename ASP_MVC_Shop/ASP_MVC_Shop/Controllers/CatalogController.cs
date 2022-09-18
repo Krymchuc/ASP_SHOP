@@ -13,7 +13,24 @@ namespace ASP_MVC_Shop.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(_dbContext.CatalogItems.ToList());
+            return View("Index1", _dbContext.CatalogItems.ToList());
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View("Create1", new CatalogItem());
+        }
+        [HttpPost]
+        public IActionResult Create(CatalogItem data)
+        {
+            if (ModelState.IsValid)
+            {
+                _dbContext.CatalogItems.Add(new CatalogItem { Id = new Random().Next()/*(_dbContext.CatalogItems.Count()) + 2*/, Name =data.Name, Count = data.Count, Price = data.Price });
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View("Create1", data);
+            
         }
         [HttpGet]
         public IActionResult Init()
